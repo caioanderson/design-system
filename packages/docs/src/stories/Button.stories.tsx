@@ -2,7 +2,7 @@ import type { StoryObj, Meta } from '@storybook/react'
 import { Button, ButtonProps } from '@caio-ui/react'
 
 export default {
-    title: 'Button',
+    title: 'Form/Button',
     component: Button,
     args: {
         children: "Enviar"
