@@ -99,29 +99,204 @@ var {
   }
 });
 
-// src/index.tsx
-var Button = styled("button", {
+// src/components/Box.tsx
+var Box = styled("div", {
+  padding: "$4",
+  borderRadius: "$md",
+  backgroundColor: "$gray800",
+  border: "1px solid $gray600"
+});
+Box.displayName = "Box";
+
+// src/components/Text.tsx
+var Text = styled("p", {
   fontFamily: "$default",
-  backgroundColor: "$amber500",
-  borderRadius: "$sm",
-  border: 0,
-  fontWeight: "bold",
+  lineHeight: "$base",
+  margin: 0,
+  color: "$gray100",
   variants: {
     size: {
-      small: {
-        fontSize: 14,
-        padding: "$4"
+      xxs: { fontSize: "$xxs" },
+      xs: { fontSize: "$xs" },
+      sm: { fontSize: "$sm" },
+      md: { fontSize: "$md" },
+      lg: { fontSize: "$lg" },
+      xl: { fontSize: "$xl" },
+      "2xl": { fontSize: "$2xl" },
+      "4xl": { fontSize: "$4xl" },
+      "5xl": { fontSize: "$5xl" },
+      "6xl": { fontSize: "$6xl" },
+      "7xl": { fontSize: "$7xl" },
+      "8xl": { fontSize: "$8xl" },
+      "9xl": { fontSize: "$9xl" }
+    }
+  },
+  defaultVariants: {
+    size: "md"
+  }
+});
+Text.displayName = "Text";
+
+// src/components/Heading.tsx
+var Heading = styled("h2", {
+  fontFamily: "$default",
+  lineHeight: "$shorter",
+  margin: 0,
+  color: "$gray100",
+  variants: {
+    size: {
+      sm: { fontSize: "$xl" },
+      md: { fontSize: "$2xl" },
+      lg: { fontSize: "$4xl" },
+      "2xl": { fontSize: "$5xl" },
+      "3xl": { fontSize: "$6xl" },
+      "4xl": { fontSize: "$7xl" },
+      "5xl": { fontSize: "$8xl" },
+      "6xl": { fontSize: "$9xl" }
+    }
+  },
+  defaultVariants: {
+    size: "md"
+  }
+});
+Heading.displayName = "Heading";
+
+// src/components/Button.tsx
+var Button = styled("button", {
+  all: "unset",
+  borderRadius: "$sm",
+  fontSize: "$sm",
+  fontWeight: "$medium",
+  fontFamily: "$default",
+  textAlign: "center",
+  minWidth: 120,
+  boxSizing: "border-box",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  gap: "$2",
+  cursor: "pointer",
+  svg: {
+    width: "$4",
+    height: "$4"
+  },
+  "&:disabled": {
+    cursor: "not-allowed"
+  },
+  variants: {
+    variant: {
+      primary: {
+        color: "$black",
+        background: "$amber500",
+        "&:not(:disabled):hover": {
+          background: "$amber300"
+        },
+        "&:disabled": {
+          background: "$gray200"
+        }
       },
-      big: {
-        fontSize: 16,
-        padding: "$6"
+      secondary: {
+        color: "$amber300",
+        background: "transparent",
+        border: "2px solid $amber500",
+        "&:not(:disabled):hover": {
+          background: "$amber500",
+          color: "$white"
+        },
+        "&:disabled": {
+          color: "$gray200",
+          borderColor: "$gray200"
+        }
+      },
+      tertiary: {
+        color: "$gray100",
+        "&:not(:disabled):hover": {
+          color: "$white"
+        },
+        "&:disabled": {
+          color: "$gray600"
+        }
+      }
+    },
+    size: {
+      sm: {
+        padding: "0 $4",
+        height: 38
+      },
+      md: {
+        padding: "0 $4",
+        height: 46
       }
     }
   },
   defaultVariants: {
-    size: "small"
+    variant: "primary",
+    size: "md"
   }
 });
+Button.displayName = "Button";
+
+// src/components/TextInput/styles.ts
+var TextInputContainer = styled("div", {
+  backgroundColor: "$gray900",
+  padding: "$3 $4",
+  borderRadius: "$sm",
+  boxSizing: "border-box",
+  border: "2px solid $gray900",
+  display: "flex",
+  alignItems: "baseline",
+  "&:has(input:focus)": {
+    borderColor: "$amber300"
+  },
+  "&:has(input:disabled)": {
+    opacity: 0.5,
+    cursor: "not-allowed"
+  }
+});
+var Prefix = styled("span", {
+  fontFamily: "$default",
+  fontSize: "$sm",
+  color: "$gray400",
+  fontWeight: "$regular"
+});
+var Input = styled("input", {
+  fontFamily: "$default",
+  fontSize: "$sm",
+  color: "$white",
+  fontWeight: "$regular",
+  background: "transparent",
+  border: 0,
+  width: "100%",
+  "&:focus": {
+    outline: 0
+  },
+  "&:disabled": {
+    cursor: "not-allowed"
+  },
+  "&:placeholder": {
+    color: "$gray400"
+  }
+});
+
+// src/components/TextInput/index.tsx
+import { jsx, jsxs } from "react/jsx-runtime";
+function TextInput({ prefix, ...props }) {
+  return /* @__PURE__ */ jsxs(TextInputContainer, {
+    children: [
+      !!prefix && /* @__PURE__ */ jsx(Prefix, {
+        children: prefix
+      }),
+      /* @__PURE__ */ jsx(Input, {
+        ...props
+      })
+    ]
+  });
+}
+TextInput.displayName = "TextInput";
 export {
-  Button
+  Box,
+  Button,
+  Heading,
+  Text,
+  TextInput
 };
