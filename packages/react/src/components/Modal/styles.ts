@@ -1,4 +1,4 @@
-import { css, keyframes } from "../../styles";
+import { css, keyframes, styled } from "../../styles";
 
 const overlayShow = keyframes({
     '0%': { opacity: 0 },
@@ -47,4 +47,17 @@ export const ModalContentCSS = css({
     padding: 25,
 
     '&:focus': { outline: 'none' },
+})
+
+export const ModalTriggerCloseCSS = css({
+    marginTop: '$4',
+    display: 'flex',
+    flexDirection: 'flex-end',
+    alignItems: 'flex-end',
+})
+
+export const ContainerFooterCard = styled('div', {
+    width: '100%',
+    display: 'flex',
+    justifyContent: 'flex-end',
 })

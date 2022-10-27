@@ -31,7 +31,9 @@ __export(src_exports, {
   Heading: () => Heading,
   Modal: () => Modal,
   ModalContent: () => ModalContent,
+  ModalTitle: () => ModalTitle,
   ModalTrigger: () => ModalTrigger,
+  ModalTriggerClose: () => ModalTriggerClose,
   ModalWrapper: () => ModalWrapper,
   Text: () => Text,
   TextInput: () => TextInput
@@ -377,12 +379,24 @@ var ModalContentCSS = css({
   padding: 25,
   "&:focus": { outline: "none" }
 });
+var ModalTriggerCloseCSS = css({
+  marginTop: "$4",
+  display: "flex",
+  flexDirection: "flex-end",
+  alignItems: "flex-end"
+});
+var ContainerFooterCard = styled("div", {
+  width: "100%",
+  display: "flex",
+  justifyContent: "flex-end"
+});
 
 // src/components/Modal/index.tsx
 var import_jsx_runtime2 = require("react/jsx-runtime");
 var ModalWrapperStyle = styled(DialogPrimitive.Content, ModalWrapperCSS);
 var ModalOverlayStyle = styled(DialogPrimitive.Overlay, ModalOverlayCSS);
 var ModalContentStyle = styled("div", ModalContentCSS);
+var ModalTriggerCloseStyle = styled(DialogPrimitive.Close, ModalTriggerCloseCSS);
 var Modal = ({ overlay = true, children, ...props }) => {
   return /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)(DialogPrimitive.Root, {
     ...props,
@@ -398,8 +412,22 @@ var ModalWrapper = ({ children, ...props }) => {
     children
   });
 };
+var ModalTriggerClose = ({ children, ...props }) => {
+  return /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(ModalTriggerCloseStyle, {
+    ...props,
+    children: /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(ContainerFooterCard, {
+      children: /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(Button, {
+        size: "sm",
+        variant: "primary",
+        children: "Cancelar"
+      })
+    })
+  });
+};
 var ModalTrigger = DialogPrimitive.Trigger;
 ModalTrigger.displayName = "ModalTrigger";
+var ModalTitle = DialogPrimitive.Title;
+ModalTitle.displayName = "ModalTitle";
 var ModalContent = ModalContentStyle;
 ModalContent.displayName = "ModalContent";
 // Annotate the CommonJS export names for ESM import in node:
@@ -409,7 +437,9 @@ ModalContent.displayName = "ModalContent";
   Heading,
   Modal,
   ModalContent,
+  ModalTitle,
   ModalTrigger,
+  ModalTriggerClose,
   ModalWrapper,
   Text,
   TextInput

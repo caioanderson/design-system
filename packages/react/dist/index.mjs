@@ -337,12 +337,24 @@ var ModalContentCSS = css({
   padding: 25,
   "&:focus": { outline: "none" }
 });
+var ModalTriggerCloseCSS = css({
+  marginTop: "$4",
+  display: "flex",
+  flexDirection: "flex-end",
+  alignItems: "flex-end"
+});
+var ContainerFooterCard = styled("div", {
+  width: "100%",
+  display: "flex",
+  justifyContent: "flex-end"
+});
 
 // src/components/Modal/index.tsx
 import { jsx as jsx2, jsxs as jsxs2 } from "react/jsx-runtime";
 var ModalWrapperStyle = styled(DialogPrimitive.Content, ModalWrapperCSS);
 var ModalOverlayStyle = styled(DialogPrimitive.Overlay, ModalOverlayCSS);
 var ModalContentStyle = styled("div", ModalContentCSS);
+var ModalTriggerCloseStyle = styled(DialogPrimitive.Close, ModalTriggerCloseCSS);
 var Modal = ({ overlay = true, children, ...props }) => {
   return /* @__PURE__ */ jsxs2(DialogPrimitive.Root, {
     ...props,
@@ -358,8 +370,22 @@ var ModalWrapper = ({ children, ...props }) => {
     children
   });
 };
+var ModalTriggerClose = ({ children, ...props }) => {
+  return /* @__PURE__ */ jsx2(ModalTriggerCloseStyle, {
+    ...props,
+    children: /* @__PURE__ */ jsx2(ContainerFooterCard, {
+      children: /* @__PURE__ */ jsx2(Button, {
+        size: "sm",
+        variant: "primary",
+        children: "Cancelar"
+      })
+    })
+  });
+};
 var ModalTrigger = DialogPrimitive.Trigger;
 ModalTrigger.displayName = "ModalTrigger";
+var ModalTitle = DialogPrimitive.Title;
+ModalTitle.displayName = "ModalTitle";
 var ModalContent = ModalContentStyle;
 ModalContent.displayName = "ModalContent";
 export {
@@ -368,7 +394,9 @@ export {
   Heading,
   Modal,
   ModalContent,
+  ModalTitle,
   ModalTrigger,
+  ModalTriggerClose,
   ModalWrapper,
   Text,
   TextInput
