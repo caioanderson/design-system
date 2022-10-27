@@ -19,5 +19,5 @@ export const {
         radii,
         space,
         fonts,
-    }
+    },
 })

@@ -293,10 +293,83 @@ function TextInput({ prefix, ...props }) {
   });
 }
 TextInput.displayName = "TextInput";
+
+// src/components/Modal/index.tsx
+import * as DialogPrimitive from "@radix-ui/react-dialog";
+
+// src/components/Modal/styles.ts
+var overlayShow = keyframes({
+  "0%": { opacity: 0 },
+  "100%": { opacity: 1 }
+});
+var overlayHide = keyframes({
+  "0%": { opacity: 1 },
+  "100%": { opacity: 0 }
+});
+var ModalOverlayCSS = css({
+  background: "rgba(0,0,0,0.5)",
+  position: "fixed",
+  inset: 0,
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  "&[data-state=open]": {
+    animation: `${overlayShow} 0.2s ease-in`
+  },
+  "&[data-state=close]": {
+    animation: `${overlayHide} 0.2s ease-in`
+  }
+});
+var ModalWrapperCSS = css({
+  background: "$white"
+});
+var ModalContentCSS = css({
+  backgroundColor: "$white",
+  borderRadius: 6,
+  boxShadow: "hsl(206 22% 7% / 35%) 0px 10px 38px -10px, hsl(206 22% 7% / 20%) 0px 10px 20px -15px",
+  position: "fixed",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
+  width: "90vw",
+  maxWidth: "450px",
+  maxHeight: "85vh",
+  padding: 25,
+  "&:focus": { outline: "none" }
+});
+
+// src/components/Modal/index.tsx
+import { jsx as jsx2, jsxs as jsxs2 } from "react/jsx-runtime";
+var ModalWrapperStyle = styled(DialogPrimitive.Content, ModalWrapperCSS);
+var ModalOverlayStyle = styled(DialogPrimitive.Overlay, ModalOverlayCSS);
+var ModalContentStyle = styled("div", ModalContentCSS);
+var Modal = ({ overlay = true, children, ...props }) => {
+  return /* @__PURE__ */ jsxs2(DialogPrimitive.Root, {
+    ...props,
+    children: [
+      overlay && /* @__PURE__ */ jsx2(ModalOverlayStyle, {}),
+      children
+    ]
+  });
+};
+var ModalWrapper = ({ children, ...props }) => {
+  return /* @__PURE__ */ jsx2(ModalWrapperStyle, {
+    ...props,
+    children
+  });
+};
+var ModalTrigger = DialogPrimitive.Trigger;
+ModalTrigger.displayName = "ModalTrigger";
+var ModalContent = ModalContentStyle;
+ModalContent.displayName = "ModalContent";
 export {
   Box,
   Button,
   Heading,
+  Modal,
+  ModalContent,
+  ModalTrigger,
+  ModalWrapper,
   Text,
   TextInput
 };
