@@ -1,0 +1,39 @@
+import { Meta } from '@storybook/addon-docs'
+
+<Meta title="Tokens/Start" />
+
+# Caio UI 
+
+## Introdução
+
+Nessa etapa de instalação vão está disponiveis :
+- [ ] Cores.
+- [ ] Fontes (tamanho, peso, tipo).
+- [ ] Tamanho da linha.
+- [ ] Espaçamentos.
+- [ ] Valores de borda.
+
+## Instalação
+
+No seu terminal instale:
+
+```bash
+# With npm
+npm install @caio-ui/tokens
+```
+
+## Uso
+
+No seu projeto react, no arquivo `App.jsx` ou `App.tsx`, faça:
+
+```javascript
+import React from 'react'
+import { colors } from '@caio-iu/tokens'
+
+export function App(){
+    return(
+        <span style={{ color: colors.gray800 }}>Exemplo de botão</span>
+    )
+}
+
+```

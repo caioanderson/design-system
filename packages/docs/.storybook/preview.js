@@ -10,5 +10,10 @@ export const parameters = {
   },
   docs: {
     theme: themes.dark
-  }
+  },
+  options: {
+    storySort: {
+      order: ['Tokens', ['Start', 'Colors', 'FontWeights', 'FontSize', 'Font', 'LineHeights', 'Radii']],
+    },
+  },
 }

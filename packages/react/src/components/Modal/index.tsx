@@ -56,4 +56,3 @@ ModalTitle.displayName = 'ModalTitle'
 
 export const ModalContent = ModalContentStyle
 ModalContent.displayName = 'ModalContent'
-
