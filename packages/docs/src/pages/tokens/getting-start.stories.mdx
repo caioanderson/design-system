@@ -28,11 +28,20 @@ No seu projeto react, no arquivo `App.jsx` ou `App.tsx`, faça:
 
 ```javascript
 import React from 'react'
-import { colors } from '@caio-iu/tokens'
+import { colors, fontSizes, fontWeights, fonts } from '@caio-iu/tokens'
+
+const styles = {
+   color: colors.gray800,
+   fontSize: fontSizes.md,
+   fontFamily: fonts.default,
+   fontWeights: fontWeights.regular
+}
 
 export function App(){
     return(
-        <span style={{ color: colors.gray800 }}>Exemplo de botão</span>
+        <span style={styles}>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+         </span>
     )
 }
 
