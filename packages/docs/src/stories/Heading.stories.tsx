@@ -1,9 +1,9 @@
 import type { StoryObj, Meta } from '@storybook/react'
-import { Heading, HeadingProps } from '@caio-ui/react'
+import { HeadingComponent, HeadingProps } from '@caio-ui/react'
 
 export default {
     title: 'Typography/Heading',
-    component: Heading,
+    component: HeadingComponent,
     args: {
         children: 'Example Heading',
         size: 'md'

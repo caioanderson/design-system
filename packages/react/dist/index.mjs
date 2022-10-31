@@ -99,16 +99,25 @@ var {
   }
 });
 
-// src/components/Box.tsx
+// src/components/Box/styles.ts
 var Box = styled("div", {
   padding: "$4",
   borderRadius: "$md",
   backgroundColor: "$gray800",
   border: "1px solid $gray600"
 });
-Box.displayName = "Box";
 
-// src/components/Text.tsx
+// src/components/Box/index.tsx
+import { jsx } from "react/jsx-runtime";
+var BoxComponent = ({ children, ...props }) => {
+  return /* @__PURE__ */ jsx(Box, {
+    ...props,
+    children
+  });
+};
+BoxComponent.displayName = "BoxComponent";
+
+// src/components/Text/styles.ts
 var Text = styled("p", {
   fontFamily: "$default",
   lineHeight: "$base",
@@ -135,9 +144,22 @@ var Text = styled("p", {
     size: "md"
   }
 });
-Text.displayName = "Text";
 
-// src/components/Heading.tsx
+// src/components/Text/index.tsx
+import { jsxs } from "react/jsx-runtime";
+var TextComponent = ({ children, ...props }) => {
+  return /* @__PURE__ */ jsxs(Text, {
+    ...props,
+    children: [
+      " ",
+      children,
+      " "
+    ]
+  });
+};
+TextComponent.displayName = "TextComponent";
+
+// src/components/Heading/styles.ts
 var Heading = styled("h2", {
   fontFamily: "$default",
   lineHeight: "$shorter",
@@ -159,10 +181,22 @@ var Heading = styled("h2", {
     size: "md"
   }
 });
-Heading.displayName = "Heading";
 
-// src/components/Button.tsx
-import { jsx } from "react/jsx-runtime";
+// src/components/Heading/index.tsx
+import { jsxs as jsxs2 } from "react/jsx-runtime";
+var HeadingComponent = ({ children, ...props }) => {
+  return /* @__PURE__ */ jsxs2(Heading, {
+    ...props,
+    children: [
+      " ",
+      children,
+      " "
+    ]
+  });
+};
+HeadingComponent.displayName = "HeadingComponent";
+
+// src/components/Button/styles.ts
 var Button = styled("button", {
   all: "unset",
   borderRadius: "$sm",
@@ -248,16 +282,19 @@ var Button = styled("button", {
     size: "md"
   }
 });
-var ButtonTeste = ({ children, ...props }) => {
-  return /* @__PURE__ */ jsx(Button, {
+
+// src/components/Button/index.tsx
+import { jsx as jsx2 } from "react/jsx-runtime";
+var ButtonComponent = ({ children, ...props }) => {
+  return /* @__PURE__ */ jsx2(Button, {
     ...props,
     children
   });
 };
-Button.displayName = "Button";
+ButtonComponent.displayName = "ButtonComponent";
 
 // src/components/TextInput/styles.ts
-var TextInputContainer = styled("div", {
+var TextInput = styled("div", {
   backgroundColor: "$gray900",
   padding: "$3 $4",
   borderRadius: "$sm",
@@ -299,20 +336,20 @@ var Input = styled("input", {
 });
 
 // src/components/TextInput/index.tsx
-import { jsx as jsx2, jsxs } from "react/jsx-runtime";
-function TextInput({ prefix, ...props }) {
-  return /* @__PURE__ */ jsxs(TextInputContainer, {
+import { jsx as jsx3, jsxs as jsxs3 } from "react/jsx-runtime";
+function TextInputComponent({ prefix, ...props }) {
+  return /* @__PURE__ */ jsxs3(TextInput, {
     children: [
-      !!prefix && /* @__PURE__ */ jsx2(Prefix, {
+      !!prefix && /* @__PURE__ */ jsx3(Prefix, {
         children: prefix
       }),
-      /* @__PURE__ */ jsx2(Input, {
+      /* @__PURE__ */ jsx3(Input, {
         ...props
       })
     ]
   });
 }
-TextInput.displayName = "TextInput";
+TextInputComponent.displayName = "TextInputComponent";
 
 // src/components/Modal/index.tsx
 import * as DialogPrimitive from "@radix-ui/react-dialog";
@@ -370,31 +407,31 @@ var ContainerFooterCard = styled("div", {
 });
 
 // src/components/Modal/index.tsx
-import { jsx as jsx3, jsxs as jsxs2 } from "react/jsx-runtime";
+import { jsx as jsx4, jsxs as jsxs4 } from "react/jsx-runtime";
 var ModalWrapperStyle = styled(DialogPrimitive.Content, ModalWrapperCSS);
 var ModalOverlayStyle = styled(DialogPrimitive.Overlay, ModalOverlayCSS);
 var ModalContentStyle = styled("div", ModalContentCSS);
 var ModalTriggerCloseStyle = styled(DialogPrimitive.Close, ModalTriggerCloseCSS);
 var Modal = ({ overlay = true, children, ...props }) => {
-  return /* @__PURE__ */ jsxs2(DialogPrimitive.Root, {
+  return /* @__PURE__ */ jsxs4(DialogPrimitive.Root, {
     ...props,
     children: [
-      overlay && /* @__PURE__ */ jsx3(ModalOverlayStyle, {}),
+      overlay && /* @__PURE__ */ jsx4(ModalOverlayStyle, {}),
       children
     ]
   });
 };
 var ModalWrapper = ({ children, ...props }) => {
-  return /* @__PURE__ */ jsx3(ModalWrapperStyle, {
+  return /* @__PURE__ */ jsx4(ModalWrapperStyle, {
     ...props,
     children
   });
 };
 var ModalTriggerClose = ({ children, ...props }) => {
-  return /* @__PURE__ */ jsx3(ModalTriggerCloseStyle, {
+  return /* @__PURE__ */ jsx4(ModalTriggerCloseStyle, {
     ...props,
-    children: /* @__PURE__ */ jsx3(ContainerFooterCard, {
-      children: /* @__PURE__ */ jsx3(Button, {
+    children: /* @__PURE__ */ jsx4(ContainerFooterCard, {
+      children: /* @__PURE__ */ jsx4(ButtonComponent, {
         size: "sm",
         variant: "primary",
         children: "Cancelar"
@@ -409,53 +446,56 @@ ModalTitle.displayName = "ModalTitle";
 var ModalContent = ModalContentStyle;
 ModalContent.displayName = "ModalContent";
 
-// src/components/Collapse.tsx
-import { styled as styled2 } from "@stitches/react";
+// src/components/Collapse/index.tsx
 import * as Collapsible from "@radix-ui/react-collapsible";
-import { jsx as jsx4 } from "react/jsx-runtime";
+
+// src/components/Collapse/styles.ts
+import { styled as styled2 } from "@stitches/react";
 var CollapsibleContentContainer = styled2("div", {
   maxWidth: 300
 });
+
+// src/components/Collapse/index.tsx
+import { jsx as jsx5 } from "react/jsx-runtime";
 var Collapse = ({ children, ...props }) => {
-  return /* @__PURE__ */ jsx4(Collapsible.Root, {
+  return /* @__PURE__ */ jsx5(Collapsible.Root, {
     ...props,
     children
   });
 };
 var CollapseTrigger = ({ children, ...props }) => {
-  return /* @__PURE__ */ jsx4(Collapsible.Trigger, {
+  return /* @__PURE__ */ jsx5(Collapsible.Trigger, {
     ...props,
-    children: /* @__PURE__ */ jsx4(ButtonTeste, {
+    children: /* @__PURE__ */ jsx5(ButtonComponent, {
       variant: "primary",
       children
     })
   });
 };
-CollapseTrigger.displayName = "CollapseTriguer";
 var CollapseContent = ({ children, ...props }) => {
-  return /* @__PURE__ */ jsx4(Collapsible.Content, {
+  return /* @__PURE__ */ jsx5(Collapsible.Content, {
     ...props,
-    children: /* @__PURE__ */ jsx4(CollapsibleContentContainer, {
+    children: /* @__PURE__ */ jsx5(CollapsibleContentContainer, {
       css: { marginTop: 10 },
       children
     })
   });
 };
+CollapseTrigger.displayName = "CollapseTriguer";
 CollapseContent.displayName = "CollapseContent";
 export {
-  Box,
-  Button,
-  ButtonTeste,
+  BoxComponent,
+  ButtonComponent,
   Collapse,
   CollapseContent,
   CollapseTrigger,
-  Heading,
+  HeadingComponent,
   Modal,
   ModalContent,
   ModalTitle,
   ModalTrigger,
   ModalTriggerClose,
   ModalWrapper,
-  Text,
-  TextInput
+  TextComponent,
+  TextInputComponent
 };

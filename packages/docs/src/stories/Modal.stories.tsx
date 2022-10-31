@@ -2,7 +2,7 @@ import type { Meta, Story } from '@storybook/react'
 import { useArgs } from '@storybook/client-api'
 import {
     Modal as ModalContainer, ModalProps, ModalWrapper,
-    ModalTrigger, ModalContent, Button, Text, ModalTitle,
+    ModalTrigger, ModalContent, ButtonComponent, TextComponent, ModalTitle,
     ModalTriggerClose
 } from '@caio-ui/react'
 import { colors } from '@caio-ui/tokens'
@@ -29,20 +29,20 @@ const Template: Story<ModalProps> = (args) => {
     return (
         <ModalContainer {...args} onOpenChange={(open) => updateArgs({ open })}>
             <ModalTrigger asChild>
-                <Button variant="secondary">
+                <ButtonComponent variant="secondary">
                     Abrir Modal
-                </Button>
+                </ButtonComponent>
             </ModalTrigger>
 
             <ModalWrapper>
                 <ModalContent>
                     <ModalTitle>
-                        <Text size='xl' css={{ color: colors.black }}>Title</Text>
+                        <TextComponent size='xl' css={{ color: colors.black }}>Title</TextComponent>
                     </ModalTitle>
-                    <Text as='p' css={{ color: colors.black }}>
+                    <TextComponent as='p' css={{ color: colors.black }}>
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                         Quisque finibus nisl eu rhoncus scelerisque.
-                    </Text>
+                    </TextComponent>
                     <ModalTriggerClose asChild />
                 </ModalContent>
             </ModalWrapper>

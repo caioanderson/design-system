@@ -1,6 +1,6 @@
 import { styled } from "../../styles";
 
-export const TextInputContainer = styled('div', {
+export const TextInput = styled('div', {
     backgroundColor: '$gray900',
     padding: '$3 $4',
     borderRadius: '$sm',

@@ -26,21 +26,20 @@ var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: tru
 // src/index.tsx
 var src_exports = {};
 __export(src_exports, {
-  Box: () => Box,
-  Button: () => Button,
-  ButtonTeste: () => ButtonTeste,
+  BoxComponent: () => BoxComponent,
+  ButtonComponent: () => ButtonComponent,
   Collapse: () => Collapse,
   CollapseContent: () => CollapseContent,
   CollapseTrigger: () => CollapseTrigger,
-  Heading: () => Heading,
+  HeadingComponent: () => HeadingComponent,
   Modal: () => Modal,
   ModalContent: () => ModalContent,
   ModalTitle: () => ModalTitle,
   ModalTrigger: () => ModalTrigger,
   ModalTriggerClose: () => ModalTriggerClose,
   ModalWrapper: () => ModalWrapper,
-  Text: () => Text,
-  TextInput: () => TextInput
+  TextComponent: () => TextComponent,
+  TextInputComponent: () => TextInputComponent
 });
 module.exports = __toCommonJS(src_exports);
 
@@ -145,16 +144,25 @@ var {
   }
 });
 
-// src/components/Box.tsx
+// src/components/Box/styles.ts
 var Box = styled("div", {
   padding: "$4",
   borderRadius: "$md",
   backgroundColor: "$gray800",
   border: "1px solid $gray600"
 });
-Box.displayName = "Box";
 
-// src/components/Text.tsx
+// src/components/Box/index.tsx
+var import_jsx_runtime = require("react/jsx-runtime");
+var BoxComponent = ({ children, ...props }) => {
+  return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Box, {
+    ...props,
+    children
+  });
+};
+BoxComponent.displayName = "BoxComponent";
+
+// src/components/Text/styles.ts
 var Text = styled("p", {
   fontFamily: "$default",
   lineHeight: "$base",
@@ -181,9 +189,22 @@ var Text = styled("p", {
     size: "md"
   }
 });
-Text.displayName = "Text";
 
-// src/components/Heading.tsx
+// src/components/Text/index.tsx
+var import_jsx_runtime2 = require("react/jsx-runtime");
+var TextComponent = ({ children, ...props }) => {
+  return /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)(Text, {
+    ...props,
+    children: [
+      " ",
+      children,
+      " "
+    ]
+  });
+};
+TextComponent.displayName = "TextComponent";
+
+// src/components/Heading/styles.ts
 var Heading = styled("h2", {
   fontFamily: "$default",
   lineHeight: "$shorter",
@@ -205,10 +226,22 @@ var Heading = styled("h2", {
     size: "md"
   }
 });
-Heading.displayName = "Heading";
 
-// src/components/Button.tsx
-var import_jsx_runtime = require("react/jsx-runtime");
+// src/components/Heading/index.tsx
+var import_jsx_runtime3 = require("react/jsx-runtime");
+var HeadingComponent = ({ children, ...props }) => {
+  return /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)(Heading, {
+    ...props,
+    children: [
+      " ",
+      children,
+      " "
+    ]
+  });
+};
+HeadingComponent.displayName = "HeadingComponent";
+
+// src/components/Button/styles.ts
 var Button = styled("button", {
   all: "unset",
   borderRadius: "$sm",
@@ -294,16 +327,19 @@ var Button = styled("button", {
     size: "md"
   }
 });
-var ButtonTeste = ({ children, ...props }) => {
-  return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+
+// src/components/Button/index.tsx
+var import_jsx_runtime4 = require("react/jsx-runtime");
+var ButtonComponent = ({ children, ...props }) => {
+  return /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Button, {
     ...props,
     children
   });
 };
-Button.displayName = "Button";
+ButtonComponent.displayName = "ButtonComponent";
 
 // src/components/TextInput/styles.ts
-var TextInputContainer = styled("div", {
+var TextInput = styled("div", {
   backgroundColor: "$gray900",
   padding: "$3 $4",
   borderRadius: "$sm",
@@ -345,20 +381,20 @@ var Input = styled("input", {
 });
 
 // src/components/TextInput/index.tsx
-var import_jsx_runtime2 = require("react/jsx-runtime");
-function TextInput({ prefix, ...props }) {
-  return /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)(TextInputContainer, {
+var import_jsx_runtime5 = require("react/jsx-runtime");
+function TextInputComponent({ prefix, ...props }) {
+  return /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)(TextInput, {
     children: [
-      !!prefix && /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(Prefix, {
+      !!prefix && /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(Prefix, {
         children: prefix
       }),
-      /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(Input, {
+      /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(Input, {
         ...props
       })
     ]
   });
 }
-TextInput.displayName = "TextInput";
+TextInputComponent.displayName = "TextInputComponent";
 
 // src/components/Modal/index.tsx
 var DialogPrimitive = __toESM(require("@radix-ui/react-dialog"));
@@ -416,31 +452,31 @@ var ContainerFooterCard = styled("div", {
 });
 
 // src/components/Modal/index.tsx
-var import_jsx_runtime3 = require("react/jsx-runtime");
+var import_jsx_runtime6 = require("react/jsx-runtime");
 var ModalWrapperStyle = styled(DialogPrimitive.Content, ModalWrapperCSS);
 var ModalOverlayStyle = styled(DialogPrimitive.Overlay, ModalOverlayCSS);
 var ModalContentStyle = styled("div", ModalContentCSS);
 var ModalTriggerCloseStyle = styled(DialogPrimitive.Close, ModalTriggerCloseCSS);
 var Modal = ({ overlay = true, children, ...props }) => {
-  return /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)(DialogPrimitive.Root, {
+  return /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)(DialogPrimitive.Root, {
     ...props,
     children: [
-      overlay && /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(ModalOverlayStyle, {}),
+      overlay && /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(ModalOverlayStyle, {}),
       children
     ]
   });
 };
 var ModalWrapper = ({ children, ...props }) => {
-  return /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(ModalWrapperStyle, {
+  return /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(ModalWrapperStyle, {
     ...props,
     children
   });
 };
 var ModalTriggerClose = ({ children, ...props }) => {
-  return /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(ModalTriggerCloseStyle, {
+  return /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(ModalTriggerCloseStyle, {
     ...props,
-    children: /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(ContainerFooterCard, {
-      children: /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(Button, {
+    children: /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(ContainerFooterCard, {
+      children: /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(ButtonComponent, {
         size: "sm",
         variant: "primary",
         children: "Cancelar"
@@ -455,54 +491,57 @@ ModalTitle.displayName = "ModalTitle";
 var ModalContent = ModalContentStyle;
 ModalContent.displayName = "ModalContent";
 
-// src/components/Collapse.tsx
-var import_react2 = require("@stitches/react");
+// src/components/Collapse/index.tsx
 var Collapsible = __toESM(require("@radix-ui/react-collapsible"));
-var import_jsx_runtime4 = require("react/jsx-runtime");
+
+// src/components/Collapse/styles.ts
+var import_react2 = require("@stitches/react");
 var CollapsibleContentContainer = (0, import_react2.styled)("div", {
   maxWidth: 300
 });
+
+// src/components/Collapse/index.tsx
+var import_jsx_runtime7 = require("react/jsx-runtime");
 var Collapse = ({ children, ...props }) => {
-  return /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Collapsible.Root, {
+  return /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(Collapsible.Root, {
     ...props,
     children
   });
 };
 var CollapseTrigger = ({ children, ...props }) => {
-  return /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Collapsible.Trigger, {
+  return /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(Collapsible.Trigger, {
     ...props,
-    children: /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(ButtonTeste, {
+    children: /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(ButtonComponent, {
       variant: "primary",
       children
     })
   });
 };
-CollapseTrigger.displayName = "CollapseTriguer";
 var CollapseContent = ({ children, ...props }) => {
-  return /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Collapsible.Content, {
+  return /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(Collapsible.Content, {
     ...props,
-    children: /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(CollapsibleContentContainer, {
+    children: /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(CollapsibleContentContainer, {
       css: { marginTop: 10 },
       children
     })
   });
 };
+CollapseTrigger.displayName = "CollapseTriguer";
 CollapseContent.displayName = "CollapseContent";
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {
-  Box,
-  Button,
-  ButtonTeste,
+  BoxComponent,
+  ButtonComponent,
   Collapse,
   CollapseContent,
   CollapseTrigger,
-  Heading,
+  HeadingComponent,
   Modal,
   ModalContent,
   ModalTitle,
   ModalTrigger,
   ModalTriggerClose,
   ModalWrapper,
-  Text,
-  TextInput
+  TextComponent,
+  TextInputComponent
 });

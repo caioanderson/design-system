@@ -5,7 +5,7 @@ import {
     ModalOverlayCSS, ModalContentCSS,
     ModalWrapperCSS, ModalTriggerCloseCSS, ContainerFooterCard
 } from './styles'
-import { Button } from "../Button";
+import { ButtonComponent } from "../Button";
 
 const ModalWrapperStyle = styled(DialogPrimitive.Content, ModalWrapperCSS)
 const ModalOverlayStyle = styled(DialogPrimitive.Overlay, ModalOverlayCSS)
@@ -42,7 +42,7 @@ export const ModalTriggerClose = ({ children, ...props }: ModalTriggerCloseProps
     return (
         <ModalTriggerCloseStyle {...props}>
             <ContainerFooterCard>
-                <Button size='sm' variant='primary'>Cancelar</Button>
+                <ButtonComponent size='sm' variant='primary'>Cancelar</ButtonComponent>
             </ContainerFooterCard>
         </ModalTriggerCloseStyle>
     )

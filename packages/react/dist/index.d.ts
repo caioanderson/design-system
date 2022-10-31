@@ -1,7 +1,7 @@
-import * as _stitches_react_types_styled_component from '@stitches/react/types/styled-component';
-import * as _stitches_react_types_css_util from '@stitches/react/types/css-util';
 import * as react from 'react';
 import { ComponentProps, ElementType } from 'react';
+import * as _stitches_react_types_styled_component from '@stitches/react/types/styled-component';
+import * as _stitches_react_types_css_util from '@stitches/react/types/css-util';
 import * as DialogPrimitive from '@radix-ui/react-dialog';
 import * as Collapsible from '@radix-ui/react-collapsible';
 
@@ -207,9 +207,14 @@ declare const Box: _stitches_react_types_styled_component.StyledComponent<"div",
     transition: "transitions";
     zIndex: "zIndices";
 }, {}>>;
+
 interface BoxProps extends ComponentProps<typeof Box> {
     as?: ElementType;
 }
+declare const BoxComponent: {
+    ({ children, ...props }: BoxProps): JSX.Element;
+    displayName: string;
+};
 
 declare const Text: _stitches_react_types_styled_component.StyledComponent<"p", {
     size?: "xxs" | "xs" | "sm" | "md" | "lg" | "xl" | "2xl" | "4xl" | "5xl" | "6xl" | "7xl" | "8xl" | "9xl" | undefined;
@@ -415,9 +420,14 @@ declare const Text: _stitches_react_types_styled_component.StyledComponent<"p", 
     transition: "transitions";
     zIndex: "zIndices";
 }, {}>>;
+
 interface TextProps extends ComponentProps<typeof Text> {
     as?: ElementType;
 }
+declare const TextComponent: {
+    ({ children, ...props }: TextProps): JSX.Element;
+    displayName: string;
+};
 
 declare const Heading: _stitches_react_types_styled_component.StyledComponent<"h2", {
     size?: "sm" | "md" | "lg" | "2xl" | "4xl" | "5xl" | "6xl" | "3xl" | undefined;
@@ -623,9 +633,14 @@ declare const Heading: _stitches_react_types_styled_component.StyledComponent<"h
     transition: "transitions";
     zIndex: "zIndices";
 }, {}>>;
+
 interface HeadingProps extends ComponentProps<typeof Heading> {
     as?: ElementType;
 }
+declare const HeadingComponent: {
+    ({ children, ...props }: HeadingProps): JSX.Element;
+    displayName: string;
+};
 
 declare const Button: _stitches_react_types_styled_component.StyledComponent<"button", {
     variant?: "primary" | "secondary" | "tertiary" | "onlyIcon" | undefined;
@@ -833,10 +848,14 @@ declare const Button: _stitches_react_types_styled_component.StyledComponent<"bu
     transition: "transitions";
     zIndex: "zIndices";
 }, {}>>;
+
 interface ButtonProps extends ComponentProps<typeof Button> {
     as?: ElementType;
 }
-declare const ButtonTeste: ({ children, ...props }: ButtonProps) => JSX.Element;
+declare const ButtonComponent: {
+    ({ children, ...props }: ButtonProps): JSX.Element;
+    displayName: string;
+};
 
 declare const Input: _stitches_react_types_styled_component.StyledComponent<"input", {}, {}, _stitches_react_types_css_util.CSS<{}, {
     colors: {
@@ -1044,8 +1063,8 @@ declare const Input: _stitches_react_types_styled_component.StyledComponent<"inp
 interface TextInputProps extends ComponentProps<typeof Input> {
     prefix?: string;
 }
-declare function TextInput({ prefix, ...props }: TextInputProps): JSX.Element;
-declare namespace TextInput {
+declare function TextInputComponent({ prefix, ...props }: TextInputProps): JSX.Element;
+declare namespace TextInputComponent {
     var displayName: string;
 }
 
@@ -1684,4 +1703,4 @@ declare const CollapseContent: {
     displayName: string;
 };
 
-export { Box, BoxProps, Button, ButtonProps, ButtonTeste, Collapse, CollapseContent, CollapseProps, CollapseTrigger, Heading, HeadingProps, Modal, ModalContent, ModalProps, ModalTitle, ModalTrigger, ModalTriggerClose, ModalTriggerCloseProps, ModalWrapper, ModalWrapperProps, Text, TextInput, TextInputProps, TextProps };
+export { BoxComponent, BoxProps, ButtonComponent, ButtonProps, Collapse, CollapseContent, CollapseProps, CollapseTrigger, HeadingComponent, HeadingProps, Modal, ModalContent, ModalProps, ModalTitle, ModalTrigger, ModalTriggerClose, ModalTriggerCloseProps, ModalWrapper, ModalWrapperProps, TextComponent, TextInputComponent, TextInputProps, TextProps };

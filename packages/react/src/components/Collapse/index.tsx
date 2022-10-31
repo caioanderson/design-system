@@ -1,12 +1,7 @@
-import { ComponentProps, useState } from "react";
-import { styled } from "@stitches/react";
+import { ComponentProps } from "react";
 import * as Collapsible from '@radix-ui/react-collapsible'
-import { ArrowDown, ArrowUp } from 'phosphor-react'
-import { ButtonTeste } from "./Button";
-
-const CollapsibleContentContainer = styled('div', {
-    maxWidth: 300
-})
+import { CollapsibleContentContainer } from './styles'
+import { ButtonComponent } from "../Button";
 
 export interface CollapseProps extends ComponentProps<typeof Collapsible.Root> { }
 
@@ -24,16 +19,16 @@ export const CollapseTrigger = ({ children, ...props }: CollapseTriggerProps) =>
 
     return (
         <Collapsible.Trigger {...props}>
-            <ButtonTeste variant='primary' >
+            <ButtonComponent variant='primary' >
                 {children}
-            </ButtonTeste>
+            </ButtonComponent>
         </Collapsible.Trigger>
     )
 }
 
-CollapseTrigger.displayName = 'CollapseTriguer'
 
 interface CollapseContentProps extends ComponentProps<typeof Collapsible.Content> { }
+
 export const CollapseContent = ({ children, ...props }: CollapseContentProps) => {
     return (
         <Collapsible.Content {...props}>
@@ -44,5 +39,5 @@ export const CollapseContent = ({ children, ...props }: CollapseContentProps) =>
     )
 }
 
-// export const CollapseContent = Collapsible.Content
+CollapseTrigger.displayName = 'CollapseTriguer'
 CollapseContent.displayName = 'CollapseContent'

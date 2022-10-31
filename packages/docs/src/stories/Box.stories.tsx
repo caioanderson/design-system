@@ -1,11 +1,11 @@
-import type { StoryObj, Meta } from '@storybook/react'
-import { Box, BoxProps, Text } from '@caio-ui/react'
+import type { Story, Meta } from '@storybook/react'
+import { BoxComponent, BoxProps, TextComponent } from '@caio-ui/react'
 
 export default {
     title: 'Surfaces/Box',
-    component: Box,
+    component: BoxComponent,
     args: {
-        children: <Text>Testando elemento Box</Text>
+        children: <TextComponent>Testando elemento Box</TextComponent>
     },
     argTypes: {
         children: {
@@ -17,7 +17,10 @@ export default {
 
 } as Meta<BoxProps>
 
-export const Primary: StoryObj<BoxProps> = {
-
+const Templates: Story<BoxProps> = (args) => {
+    return (
+        <BoxComponent {...args} />
+    )
 }
 
+export const Box = Templates.bind({})

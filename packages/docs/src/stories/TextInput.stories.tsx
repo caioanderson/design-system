@@ -1,9 +1,9 @@
 import type { StoryObj, Meta } from '@storybook/react'
-import { Box, Text, TextInput, TextInputProps } from '@caio-ui/react'
+import { BoxComponent, TextComponent, TextInputComponent, TextInputProps } from '@caio-ui/react'
 
 export default {
     title: 'Form/TextInput',
-    component: TextInput,
+    component: TextInputComponent,
     args: {},
     
 } as Meta<TextInputProps>
@@ -15,10 +15,10 @@ export const Primary: StoryObj<TextInputProps> = {
     decorators: [
         (Story) => {
             return(
-                <Box as='label' css={{ display: 'flex', flexDirection: 'column', gap: '$2' }}>
-                    <Text>Digite seu usuario</Text>
+                <BoxComponent as='label' css={{ display: 'flex', flexDirection: 'column', gap: '$2' }}>
+                    <TextComponent>Digite seu usuario</TextComponent>
                     {Story()}
-                </Box>
+                </BoxComponent>
             )
         }
     ]
@@ -31,10 +31,10 @@ export const Disabled: StoryObj<TextInputProps> = {
     decorators: [
         (Story) => {
             return(
-                <Box as='label' css={{ display: 'flex', flexDirection: 'column', gap: '$2' }}>
-                    <Text>Digite seu usuario</Text>
+                <BoxComponent as='label' css={{ display: 'flex', flexDirection: 'column', gap: '$2' }}>
+                    <TextComponent>Digite seu usuario</TextComponent>
                     {Story()}
-                </Box>
+                </BoxComponent>
             )
         }
     ]

@@ -1,11 +1,10 @@
 import type { StoryObj, Meta } from '@storybook/react'
-import { Button, ButtonProps } from '@caio-ui/react'
+import { ButtonComponent, ButtonProps } from '@caio-ui/react'
 import { ArrowUUpRight, Check } from 'phosphor-react'
-import { ComponentType } from 'react'
 
 export default {
     title: 'Form/Button',
-    component: Button,
+    component: ButtonComponent,
     args: {
         children: 'Send',
         variant: 'primary',

@@ -1,9 +1,9 @@
 import type { StoryObj, Meta } from '@storybook/react'
-import { Text, TextProps } from '@caio-ui/react'
+import { TextComponent, TextProps } from '@caio-ui/react'
 
 export default {
     title: 'Typography/Text',
-    component: Text,
+    component: TextComponent,
     args: {
         children: 'Example text',
         size: 'md'
