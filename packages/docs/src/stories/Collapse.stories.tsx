@@ -1,11 +1,12 @@
-import type { Meta, Story, StoryObj } from '@storybook/react'
+import type { Meta, Story } from '@storybook/react'
 import { useArgs } from '@storybook/client-api'
-import { Collapse, CollapseProps, CollapseTrigger, CollapseContent, Box, Text } from '@caio-ui/react'
-import { ArrowDown, ArrowUp, ArrowsInLineVertical, X } from 'phosphor-react'
+import { Collapse as CallapseContainer, CollapseProps, CollapseTrigger, CollapseContent, Box, Text } from '@caio-ui/react'
+import { ArrowsInLineVertical, X } from 'phosphor-react'
+import { useEffect } from 'react'
 
 export default {
-    title: "Table/Collapse",
-    component: Collapse,
+    title: "Components/Collapse",
+    component: CallapseContainer,
     args: {
         open: false,
         disabled: false
@@ -24,21 +25,34 @@ const Templates: Story<CollapseProps> = (args) => {
 
     const [, updateArgs] = useArgs()
 
+    function setOpenCollapse(open: boolean) {
+        console.log(open)
+        if (!args.disabled)
+            updateArgs({ open })
+        // else
+        //     updateArgs({ false })
+    }
+
+    // useEffect(() => {
+    //     if (args.open)
+    //         updateArgs({ open })
+    // }, [args])
+
     return (
-        <Collapse {...args} onOpenChange={(open) => updateArgs({ open })}>
+        <CallapseContainer {...args} onOpenChange={(open) => updateArgs({open})}>
             <CollapseTrigger asChild>
-                {args.open ? <X weight='bold'/> : <ArrowsInLineVertical weight='bold'/>}
+                {args.open || args.disabled ? <X weight='bold' /> : <ArrowsInLineVertical weight='bold' />}
             </CollapseTrigger>
             <CollapseContent>
                 <Box>
-                    <Text>Teste</Text>
+                    <Text>Item 1</Text>
                 </Box>
                 <Box>
-                    <Text>Teste</Text>
+                    <Text>Item 2</Text>
                 </Box>
             </CollapseContent>
-        </Collapse>
+        </CallapseContainer>
     )
 }
 
-export const Primary = Templates.bind({})
+export const Collapse = Templates.bind({})
