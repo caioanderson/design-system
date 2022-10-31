@@ -28,6 +28,9 @@ var src_exports = {};
 __export(src_exports, {
   Box: () => Box,
   Button: () => Button,
+  Collapse: () => Collapse,
+  CollapseContent: () => CollapseContent,
+  CollapseTrigger: () => CollapseTrigger,
   Heading: () => Heading,
   Modal: () => Modal,
   ModalContent: () => ModalContent,
@@ -211,7 +214,7 @@ var Button = styled("button", {
   fontWeight: "$medium",
   fontFamily: "$default",
   textAlign: "center",
-  minWidth: 120,
+  width: 120,
   boxSizing: "border-box",
   display: "flex",
   alignItems: "center",
@@ -258,6 +261,12 @@ var Button = styled("button", {
         "&:disabled": {
           color: "$gray600"
         }
+      },
+      onlyIcon: {
+        background: "$amber300",
+        "&:not(:disabled):hover": {
+          background: "$amber500"
+        }
       }
     },
     size: {
@@ -268,6 +277,13 @@ var Button = styled("button", {
       md: {
         padding: "0 $4",
         height: 46
+      }
+    },
+    rounded: {
+      true: {
+        width: "$12",
+        height: "$12",
+        borderRadius: "$full"
       }
     }
   },
@@ -430,10 +446,47 @@ var ModalTitle = DialogPrimitive.Title;
 ModalTitle.displayName = "ModalTitle";
 var ModalContent = ModalContentStyle;
 ModalContent.displayName = "ModalContent";
+
+// src/components/Collapse.tsx
+var import_react2 = require("@stitches/react");
+var Collapsible = __toESM(require("@radix-ui/react-collapsible"));
+var import_jsx_runtime3 = require("react/jsx-runtime");
+var CollapsibleContentContainer = (0, import_react2.styled)("div", {
+  maxWidth: 300
+});
+var Collapse = ({ children, ...props }) => {
+  return /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(Collapsible.Root, {
+    ...props,
+    children
+  });
+};
+var CollapseTrigger = ({ children, ...props }) => {
+  return /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(Collapsible.Trigger, {
+    ...props,
+    children: /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(Button, {
+      variant: "primary",
+      children
+    })
+  });
+};
+CollapseTrigger.displayName = "CollapseTriguer";
+var CollapseContent = ({ children, ...props }) => {
+  return /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(Collapsible.Content, {
+    ...props,
+    children: /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(CollapsibleContentContainer, {
+      css: { marginTop: 10 },
+      children
+    })
+  });
+};
+CollapseContent.displayName = "CollapseContent";
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {
   Box,
   Button,
+  Collapse,
+  CollapseContent,
+  CollapseTrigger,
   Heading,
   Modal,
   ModalContent,

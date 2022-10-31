@@ -1,6 +1,7 @@
 import type { StoryObj, Meta } from '@storybook/react'
 import { Button, ButtonProps } from '@caio-ui/react'
-import { ArrowUUpRight } from 'phosphor-react'
+import { ArrowUUpRight, Check } from 'phosphor-react'
+import { ComponentType } from 'react'
 
 export default {
     title: 'Form/Button',
@@ -81,5 +82,14 @@ export const WithIcon: StoryObj<ButtonProps> = {
 export const Disabled: StoryObj<ButtonProps> = {
     args: {
         disabled: true,
+    }
+}
+
+export const OnlyIcon: StoryObj<ButtonProps> = {
+    args: {
+        children: <Check weight='bold'/>,
+        variant: 'onlyIcon',
+        size: 'sm',
+        rounded: true,
     }
 }

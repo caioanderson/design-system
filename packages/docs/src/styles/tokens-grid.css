@@ -13,6 +13,7 @@
 .tokens-grid tbody td{
     padding: 0.75rem 1rem;
     color: #CCC;
+    max-width: 100px;
 }
 
 .tokens-grid tbody td:first-child{
@@ -27,4 +28,13 @@
 
 .tokens-grid tbody tr:nth-child(even) td{
     background: #444;
+}
+
+.text-grid-tokens-properties{
+    background: rgba(0, 0, 0, 0.2);
+    color: '#fff';
+    padding: 1px;
+    margin-right: 5px;
+    border-radius: 3px;
+    font-family: sans-serif;
 }

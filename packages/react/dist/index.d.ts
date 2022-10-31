@@ -3,6 +3,7 @@ import * as _stitches_react_types_css_util from '@stitches/react/types/css-util'
 import * as react from 'react';
 import { ComponentProps, ElementType } from 'react';
 import * as DialogPrimitive from '@radix-ui/react-dialog';
+import * as Collapsible from '@radix-ui/react-collapsible';
 
 declare const Box: _stitches_react_types_styled_component.StyledComponent<"div", {}, {}, _stitches_react_types_css_util.CSS<{}, {
     colors: {
@@ -627,8 +628,9 @@ interface HeadingProps extends ComponentProps<typeof Heading> {
 }
 
 declare const Button: _stitches_react_types_styled_component.StyledComponent<"button", {
-    variant?: "primary" | "secondary" | "tertiary" | undefined;
+    variant?: "primary" | "secondary" | "tertiary" | "onlyIcon" | undefined;
     size?: "sm" | "md" | undefined;
+    rounded?: boolean | "true" | undefined;
 }, {}, _stitches_react_types_css_util.CSS<{}, {
     colors: {
         white: string;
@@ -1665,4 +1667,20 @@ declare const ModalContent: _stitches_react_types_styled_component.StyledCompone
     zIndex: "zIndices";
 }, {}>>;
 
-export { Box, BoxProps, Button, ButtonProps, Heading, HeadingProps, Modal, ModalContent, ModalProps, ModalTitle, ModalTrigger, ModalTriggerClose, ModalTriggerCloseProps, ModalWrapper, ModalWrapperProps, Text, TextInput, TextInputProps, TextProps };
+interface CollapseProps extends ComponentProps<typeof Collapsible.Root> {
+}
+declare const Collapse: ({ children, ...props }: CollapseProps) => JSX.Element;
+interface CollapseTriggerProps extends ComponentProps<typeof Collapsible.Trigger> {
+}
+declare const CollapseTrigger: {
+    ({ children, ...props }: CollapseTriggerProps): JSX.Element;
+    displayName: string;
+};
+interface CollapseContentProps extends ComponentProps<typeof Collapsible.Content> {
+}
+declare const CollapseContent: {
+    ({ children, ...props }: CollapseContentProps): JSX.Element;
+    displayName: string;
+};
+
+export { Box, BoxProps, Button, ButtonProps, Collapse, CollapseContent, CollapseProps, CollapseTrigger, Heading, HeadingProps, Modal, ModalContent, ModalProps, ModalTitle, ModalTrigger, ModalTriggerClose, ModalTriggerCloseProps, ModalWrapper, ModalWrapperProps, Text, TextInput, TextInputProps, TextProps };

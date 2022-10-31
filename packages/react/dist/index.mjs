@@ -169,7 +169,7 @@ var Button = styled("button", {
   fontWeight: "$medium",
   fontFamily: "$default",
   textAlign: "center",
-  minWidth: 120,
+  width: 120,
   boxSizing: "border-box",
   display: "flex",
   alignItems: "center",
@@ -216,6 +216,12 @@ var Button = styled("button", {
         "&:disabled": {
           color: "$gray600"
         }
+      },
+      onlyIcon: {
+        background: "$amber300",
+        "&:not(:disabled):hover": {
+          background: "$amber500"
+        }
       }
     },
     size: {
@@ -226,6 +232,13 @@ var Button = styled("button", {
       md: {
         padding: "0 $4",
         height: 46
+      }
+    },
+    rounded: {
+      true: {
+        width: "$12",
+        height: "$12",
+        borderRadius: "$full"
       }
     }
   },
@@ -388,9 +401,46 @@ var ModalTitle = DialogPrimitive.Title;
 ModalTitle.displayName = "ModalTitle";
 var ModalContent = ModalContentStyle;
 ModalContent.displayName = "ModalContent";
+
+// src/components/Collapse.tsx
+import { styled as styled2 } from "@stitches/react";
+import * as Collapsible from "@radix-ui/react-collapsible";
+import { jsx as jsx3 } from "react/jsx-runtime";
+var CollapsibleContentContainer = styled2("div", {
+  maxWidth: 300
+});
+var Collapse = ({ children, ...props }) => {
+  return /* @__PURE__ */ jsx3(Collapsible.Root, {
+    ...props,
+    children
+  });
+};
+var CollapseTrigger = ({ children, ...props }) => {
+  return /* @__PURE__ */ jsx3(Collapsible.Trigger, {
+    ...props,
+    children: /* @__PURE__ */ jsx3(Button, {
+      variant: "primary",
+      children
+    })
+  });
+};
+CollapseTrigger.displayName = "CollapseTriguer";
+var CollapseContent = ({ children, ...props }) => {
+  return /* @__PURE__ */ jsx3(Collapsible.Content, {
+    ...props,
+    children: /* @__PURE__ */ jsx3(CollapsibleContentContainer, {
+      css: { marginTop: 10 },
+      children
+    })
+  });
+};
+CollapseContent.displayName = "CollapseContent";
 export {
   Box,
   Button,
+  Collapse,
+  CollapseContent,
+  CollapseTrigger,
   Heading,
   Modal,
   ModalContent,

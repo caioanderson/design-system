@@ -8,7 +8,7 @@ export const Button = styled('button', {
     fontWeight: '$medium',
     fontFamily: '$default',
     textAlign: 'center',
-    minWidth: 120,
+    width: 120,
     boxSizing: 'border-box',
 
     display: 'flex',
@@ -69,6 +69,12 @@ export const Button = styled('button', {
                 '&:disabled': {
                     color: '$gray600',
                 }
+            },
+            onlyIcon : {
+                background: '$amber300',
+                '&:not(:disabled):hover': {
+                    background: '$amber500'
+                },
             }
         },
 
@@ -80,6 +86,14 @@ export const Button = styled('button', {
             md: {
                 padding: '0 $4',
                 height: 46
+            }
+        },
+
+        rounded: {
+            true : {
+                width: '$12',
+                height: '$12',
+                borderRadius: '$full'
             }
         }
     },
