@@ -28,6 +28,7 @@ var src_exports = {};
 __export(src_exports, {
   Box: () => Box,
   Button: () => Button,
+  ButtonTeste: () => ButtonTeste,
   Collapse: () => Collapse,
   CollapseContent: () => CollapseContent,
   CollapseTrigger: () => CollapseTrigger,
@@ -207,6 +208,7 @@ var Heading = styled("h2", {
 Heading.displayName = "Heading";
 
 // src/components/Button.tsx
+var import_jsx_runtime = require("react/jsx-runtime");
 var Button = styled("button", {
   all: "unset",
   borderRadius: "$sm",
@@ -292,6 +294,12 @@ var Button = styled("button", {
     size: "md"
   }
 });
+var ButtonTeste = ({ children, ...props }) => {
+  return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+    ...props,
+    children
+  });
+};
 Button.displayName = "Button";
 
 // src/components/TextInput/styles.ts
@@ -337,14 +345,14 @@ var Input = styled("input", {
 });
 
 // src/components/TextInput/index.tsx
-var import_jsx_runtime = require("react/jsx-runtime");
+var import_jsx_runtime2 = require("react/jsx-runtime");
 function TextInput({ prefix, ...props }) {
-  return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(TextInputContainer, {
+  return /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)(TextInputContainer, {
     children: [
-      !!prefix && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Prefix, {
+      !!prefix && /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(Prefix, {
         children: prefix
       }),
-      /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
+      /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(Input, {
         ...props
       })
     ]
@@ -408,31 +416,31 @@ var ContainerFooterCard = styled("div", {
 });
 
 // src/components/Modal/index.tsx
-var import_jsx_runtime2 = require("react/jsx-runtime");
+var import_jsx_runtime3 = require("react/jsx-runtime");
 var ModalWrapperStyle = styled(DialogPrimitive.Content, ModalWrapperCSS);
 var ModalOverlayStyle = styled(DialogPrimitive.Overlay, ModalOverlayCSS);
 var ModalContentStyle = styled("div", ModalContentCSS);
 var ModalTriggerCloseStyle = styled(DialogPrimitive.Close, ModalTriggerCloseCSS);
 var Modal = ({ overlay = true, children, ...props }) => {
-  return /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)(DialogPrimitive.Root, {
+  return /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)(DialogPrimitive.Root, {
     ...props,
     children: [
-      overlay && /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(ModalOverlayStyle, {}),
+      overlay && /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(ModalOverlayStyle, {}),
       children
     ]
   });
 };
 var ModalWrapper = ({ children, ...props }) => {
-  return /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(ModalWrapperStyle, {
+  return /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(ModalWrapperStyle, {
     ...props,
     children
   });
 };
 var ModalTriggerClose = ({ children, ...props }) => {
-  return /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(ModalTriggerCloseStyle, {
+  return /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(ModalTriggerCloseStyle, {
     ...props,
-    children: /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(ContainerFooterCard, {
-      children: /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(Button, {
+    children: /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(ContainerFooterCard, {
+      children: /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(Button, {
         size: "sm",
         variant: "primary",
         children: "Cancelar"
@@ -450,20 +458,20 @@ ModalContent.displayName = "ModalContent";
 // src/components/Collapse.tsx
 var import_react2 = require("@stitches/react");
 var Collapsible = __toESM(require("@radix-ui/react-collapsible"));
-var import_jsx_runtime3 = require("react/jsx-runtime");
+var import_jsx_runtime4 = require("react/jsx-runtime");
 var CollapsibleContentContainer = (0, import_react2.styled)("div", {
   maxWidth: 300
 });
 var Collapse = ({ children, ...props }) => {
-  return /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(Collapsible.Root, {
+  return /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Collapsible.Root, {
     ...props,
     children
   });
 };
 var CollapseTrigger = ({ children, ...props }) => {
-  return /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(Collapsible.Trigger, {
+  return /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Collapsible.Trigger, {
     ...props,
-    children: /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(Button, {
+    children: /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(ButtonTeste, {
       variant: "primary",
       children
     })
@@ -471,9 +479,9 @@ var CollapseTrigger = ({ children, ...props }) => {
 };
 CollapseTrigger.displayName = "CollapseTriguer";
 var CollapseContent = ({ children, ...props }) => {
-  return /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(Collapsible.Content, {
+  return /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Collapsible.Content, {
     ...props,
-    children: /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(CollapsibleContentContainer, {
+    children: /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(CollapsibleContentContainer, {
       css: { marginTop: 10 },
       children
     })
@@ -484,6 +492,7 @@ CollapseContent.displayName = "CollapseContent";
 0 && (module.exports = {
   Box,
   Button,
+  ButtonTeste,
   Collapse,
   CollapseContent,
   CollapseTrigger,

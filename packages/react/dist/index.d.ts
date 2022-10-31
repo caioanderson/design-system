@@ -836,6 +836,7 @@ declare const Button: _stitches_react_types_styled_component.StyledComponent<"bu
 interface ButtonProps extends ComponentProps<typeof Button> {
     as?: ElementType;
 }
+declare const ButtonTeste: ({ children, ...props }: ButtonProps) => JSX.Element;
 
 declare const Input: _stitches_react_types_styled_component.StyledComponent<"input", {}, {}, _stitches_react_types_css_util.CSS<{}, {
     colors: {
@@ -1683,4 +1684,4 @@ declare const CollapseContent: {
     displayName: string;
 };
 
-export { Box, BoxProps, Button, ButtonProps, Collapse, CollapseContent, CollapseProps, CollapseTrigger, Heading, HeadingProps, Modal, ModalContent, ModalProps, ModalTitle, ModalTrigger, ModalTriggerClose, ModalTriggerCloseProps, ModalWrapper, ModalWrapperProps, Text, TextInput, TextInputProps, TextProps };
+export { Box, BoxProps, Button, ButtonProps, ButtonTeste, Collapse, CollapseContent, CollapseProps, CollapseTrigger, Heading, HeadingProps, Modal, ModalContent, ModalProps, ModalTitle, ModalTrigger, ModalTriggerClose, ModalTriggerCloseProps, ModalWrapper, ModalWrapperProps, Text, TextInput, TextInputProps, TextProps };

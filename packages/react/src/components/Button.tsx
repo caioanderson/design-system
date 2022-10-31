@@ -108,4 +108,14 @@ export interface ButtonProps extends ComponentProps<typeof Button> {
     as?: ElementType
 }
 
+export const ButtonTeste = ({ children, ...props }: ButtonProps) => {
+    return(
+        <Button {...props}>
+            {children}
+        </Button>
+    )
+}
+
+
+
 Button.displayName = 'Button'
