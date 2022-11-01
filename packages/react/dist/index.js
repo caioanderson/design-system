@@ -39,7 +39,11 @@ __export(src_exports, {
   ModalTriggerClose: () => ModalTriggerClose,
   ModalWrapper: () => ModalWrapper,
   TextComponent: () => TextComponent,
-  TextInputComponent: () => TextInputComponent
+  TextInputComponent: () => TextInputComponent,
+  TooltipComponent: () => TooltipComponent,
+  TooltipContent: () => TooltipContent,
+  TooltipProvider: () => TooltipProvider,
+  TooltipTrigger: () => TooltipTrigger
 });
 module.exports = __toCommonJS(src_exports);
 
@@ -528,6 +532,86 @@ var CollapseContent = ({ children, ...props }) => {
 };
 CollapseTrigger.displayName = "CollapseTriguer";
 CollapseContent.displayName = "CollapseContent";
+
+// src/components/Tooltip/index.tsx
+var Tooltip2 = __toESM(require("@radix-ui/react-tooltip"));
+
+// src/components/Tooltip/styles.ts
+var Tooltip = __toESM(require("@radix-ui/react-tooltip"));
+var slideUpAndFade = keyframes({
+  "0%": { opacity: 0, transform: "translateY(2px)" },
+  "100%": { opacity: 1, transform: "translateY(0)" }
+});
+var slideRightAndFade = keyframes({
+  "0%": { opacity: 0, transform: "translateX(-2px)" },
+  "100%": { opacity: 1, transform: "translateX(0)" }
+});
+var slideDownAndFade = keyframes({
+  "0%": { opacity: 0, transform: "translateY(-2px)" },
+  "100%": { opacity: 1, transform: "translateY(0)" }
+});
+var slideLeftAndFade = keyframes({
+  "0%": { opacity: 0, transform: "translateX(2px)" },
+  "100%": { opacity: 1, transform: "translateX(0)" }
+});
+var StyledContent = styled(Tooltip.Content, {
+  borderRadius: 4,
+  padding: "10px 15px",
+  fontSize: 15,
+  lineHeight: 1,
+  color: "$amber700",
+  backgroundColor: "white",
+  boxShadow: "hsl(206 22% 7% / 35%) 0px 10px 38px -10px, hsl(206 22% 7% / 20%) 0px 10px 20px -15px",
+  userSelect: "none",
+  "@media (prefers-reduced-motion: no-preference)": {
+    animationDuration: "400ms",
+    animationTimingFunction: "cubic-bezier(0.16, 1, 0.3, 1)",
+    willChange: "transform, opacity",
+    '&[data-state="delayed-open"]': {
+      '&[data-side="top"]': { animationName: slideDownAndFade },
+      '&[data-side="right"]': { animationName: slideLeftAndFade },
+      '&[data-side="bottom"]': { animationName: slideUpAndFade },
+      '&[data-side="left"]': { animationName: slideRightAndFade }
+    }
+  }
+});
+var StyledArrow = styled(Tooltip.Arrow, {
+  fill: "white"
+});
+
+// src/components/Tooltip/index.tsx
+var import_jsx_runtime8 = require("react/jsx-runtime");
+var TooltipProvider = ({ children, ...props }) => {
+  return /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(Tooltip2.Provider, {
+    children
+  });
+};
+var TooltipComponent = ({ children, ...props }) => {
+  return /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(Tooltip2.Root, {
+    ...props,
+    children
+  });
+};
+var TooltipTrigger = ({ children, ...props }) => {
+  return /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(Tooltip2.Trigger, {
+    ...props,
+    children
+  });
+};
+var TooltipContent = ({ children, ...props }) => {
+  return /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(Tooltip2.Portal, {
+    children: /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)(StyledContent, {
+      ...props,
+      children: [
+        children,
+        /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(StyledArrow, {})
+      ]
+    })
+  });
+};
+TooltipProvider.displayName = "TooltipProvider";
+TooltipTrigger.displayName = "TooltipTrigger";
+TooltipContent.displayName = "TooltipContent";
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {
   BoxComponent,
@@ -543,5 +627,9 @@ CollapseContent.displayName = "CollapseContent";
   ModalTriggerClose,
   ModalWrapper,
   TextComponent,
-  TextInputComponent
+  TextInputComponent,
+  TooltipComponent,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger
 });

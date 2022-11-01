@@ -4,6 +4,7 @@ import * as _stitches_react_types_styled_component from '@stitches/react/types/s
 import * as _stitches_react_types_css_util from '@stitches/react/types/css-util';
 import * as DialogPrimitive from '@radix-ui/react-dialog';
 import * as Collapsible from '@radix-ui/react-collapsible';
+import * as Tooltip from '@radix-ui/react-tooltip';
 
 declare const Box: _stitches_react_types_styled_component.StyledComponent<"div", {}, {}, _stitches_react_types_css_util.CSS<{}, {
     colors: {
@@ -1703,4 +1704,26 @@ declare const CollapseContent: {
     displayName: string;
 };
 
-export { BoxComponent, BoxProps, ButtonComponent, ButtonProps, Collapse, CollapseContent, CollapseProps, CollapseTrigger, HeadingComponent, HeadingProps, Modal, ModalContent, ModalProps, ModalTitle, ModalTrigger, ModalTriggerClose, ModalTriggerCloseProps, ModalWrapper, ModalWrapperProps, TextComponent, TextInputComponent, TextInputProps, TextProps };
+interface TooltipProviderProps extends ComponentProps<typeof Tooltip.Provider> {
+}
+declare const TooltipProvider: {
+    ({ children, ...props }: TooltipProviderProps): JSX.Element;
+    displayName: string;
+};
+interface TooltipProps extends ComponentProps<typeof Tooltip.Root> {
+}
+declare const TooltipComponent: ({ children, ...props }: TooltipProps) => JSX.Element;
+interface TooltipTriggerProps extends ComponentProps<typeof Tooltip.Trigger> {
+}
+declare const TooltipTrigger: {
+    ({ children, ...props }: TooltipTriggerProps): JSX.Element;
+    displayName: string;
+};
+interface TooltipContentPros extends ComponentProps<typeof Tooltip.Content> {
+}
+declare const TooltipContent: {
+    ({ children, ...props }: TooltipContentPros): JSX.Element;
+    displayName: string;
+};
+
+export { BoxComponent, BoxProps, ButtonComponent, ButtonProps, Collapse, CollapseContent, CollapseProps, CollapseTrigger, HeadingComponent, HeadingProps, Modal, ModalContent, ModalProps, ModalTitle, ModalTrigger, ModalTriggerClose, ModalTriggerCloseProps, ModalWrapper, ModalWrapperProps, TextComponent, TextInputComponent, TextInputProps, TextProps, TooltipComponent, TooltipContent, TooltipProps, TooltipProvider, TooltipTrigger };

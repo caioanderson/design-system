@@ -483,6 +483,86 @@ var CollapseContent = ({ children, ...props }) => {
 };
 CollapseTrigger.displayName = "CollapseTriguer";
 CollapseContent.displayName = "CollapseContent";
+
+// src/components/Tooltip/index.tsx
+import * as Tooltip2 from "@radix-ui/react-tooltip";
+
+// src/components/Tooltip/styles.ts
+import * as Tooltip from "@radix-ui/react-tooltip";
+var slideUpAndFade = keyframes({
+  "0%": { opacity: 0, transform: "translateY(2px)" },
+  "100%": { opacity: 1, transform: "translateY(0)" }
+});
+var slideRightAndFade = keyframes({
+  "0%": { opacity: 0, transform: "translateX(-2px)" },
+  "100%": { opacity: 1, transform: "translateX(0)" }
+});
+var slideDownAndFade = keyframes({
+  "0%": { opacity: 0, transform: "translateY(-2px)" },
+  "100%": { opacity: 1, transform: "translateY(0)" }
+});
+var slideLeftAndFade = keyframes({
+  "0%": { opacity: 0, transform: "translateX(2px)" },
+  "100%": { opacity: 1, transform: "translateX(0)" }
+});
+var StyledContent = styled(Tooltip.Content, {
+  borderRadius: 4,
+  padding: "10px 15px",
+  fontSize: 15,
+  lineHeight: 1,
+  color: "$amber700",
+  backgroundColor: "white",
+  boxShadow: "hsl(206 22% 7% / 35%) 0px 10px 38px -10px, hsl(206 22% 7% / 20%) 0px 10px 20px -15px",
+  userSelect: "none",
+  "@media (prefers-reduced-motion: no-preference)": {
+    animationDuration: "400ms",
+    animationTimingFunction: "cubic-bezier(0.16, 1, 0.3, 1)",
+    willChange: "transform, opacity",
+    '&[data-state="delayed-open"]': {
+      '&[data-side="top"]': { animationName: slideDownAndFade },
+      '&[data-side="right"]': { animationName: slideLeftAndFade },
+      '&[data-side="bottom"]': { animationName: slideUpAndFade },
+      '&[data-side="left"]': { animationName: slideRightAndFade }
+    }
+  }
+});
+var StyledArrow = styled(Tooltip.Arrow, {
+  fill: "white"
+});
+
+// src/components/Tooltip/index.tsx
+import { jsx as jsx6, jsxs as jsxs5 } from "react/jsx-runtime";
+var TooltipProvider = ({ children, ...props }) => {
+  return /* @__PURE__ */ jsx6(Tooltip2.Provider, {
+    children
+  });
+};
+var TooltipComponent = ({ children, ...props }) => {
+  return /* @__PURE__ */ jsx6(Tooltip2.Root, {
+    ...props,
+    children
+  });
+};
+var TooltipTrigger = ({ children, ...props }) => {
+  return /* @__PURE__ */ jsx6(Tooltip2.Trigger, {
+    ...props,
+    children
+  });
+};
+var TooltipContent = ({ children, ...props }) => {
+  return /* @__PURE__ */ jsx6(Tooltip2.Portal, {
+    children: /* @__PURE__ */ jsxs5(StyledContent, {
+      ...props,
+      children: [
+        children,
+        /* @__PURE__ */ jsx6(StyledArrow, {})
+      ]
+    })
+  });
+};
+TooltipProvider.displayName = "TooltipProvider";
+TooltipTrigger.displayName = "TooltipTrigger";
+TooltipContent.displayName = "TooltipContent";
 export {
   BoxComponent,
   ButtonComponent,
@@ -497,5 +577,9 @@ export {
   ModalTriggerClose,
   ModalWrapper,
   TextComponent,
-  TextInputComponent
+  TextInputComponent,
+  TooltipComponent,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger
 };
