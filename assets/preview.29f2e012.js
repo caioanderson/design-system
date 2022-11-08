@@ -1,0 +1,2 @@
+import{t as o}from"./index.129c19f8.js";import"./iframe.2a440569.js";import"./es.map.constructor.87b95d01.js";import"./es.number.to-fixed.d6f09bb8.js";import"./index.146a07b9.js";const a={actions:{argTypesRegex:"^on[A-Z].*"},controls:{matchers:{color:/(background|color)$/i,date:/Date$/}},docs:{theme:o.dark},options:{storySort:{order:["Tokens",["Start","Colors","FontWeights","FontSize","Font","LineHeights","Radii"]]}}};export{a as parameters};
+//# sourceMappingURL=preview.29f2e012.js.map
